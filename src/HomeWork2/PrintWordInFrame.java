@@ -1,6 +1,6 @@
 package HomeWork2;
 import java.util.Scanner;
-
+//
 public class PrintWordInFrame {
     public static void main(String[] args) {
         System.out.println("Hello. I type the word in a frame");

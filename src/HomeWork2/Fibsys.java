@@ -1,6 +1,7 @@
 package HomeWork2;
 import java.util.Scanner;
 public class Fibsys {
+    //
     public static void main(String[] args) {
         var in = new Scanner(System.in);
         long num = in.nextLong();
