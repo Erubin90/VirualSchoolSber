@@ -1,16 +1,26 @@
-package com.balda;
+package com.balda.windows;
 
-public class Messages {
-    protected final int LENGTH_THE_SCREEN = 59;
+import com.balda.gameClass.Game;
+import com.balda.gameClass.Player;
+
+import static com.balda.gameClass.Game.LENGTH_THE_SCREEN;
+
+
+public interface Print {
     String[] balda = {
-            "*******    ***     *******       ***        ***  ",
-            "**        ** **    **   **      ** **      ** ** ",
-            "*******  **   **   **   **     **   **    **   **",
-            "**   **  *******   **   **  ************  *******",
-            "*******  **   **  ***   **  **        **  **   **"};
+            "███████    ███     ███████       ███         ███  ",
+            "██        ██ ██    ██   ██      ██ ██       ██ ██ ",
+            "███████  ██   ██   ██   ██     ██   ██     ██   ██",
+            "██   ██  ██▅▅▅██   ██   ██  █████████████  ██▅▅▅██",
+            "██▅▅▅██  ██   ██  ▅██   ██  ██         ██  ██   ██"};
     String[] button = {
             "┌───┬─────────────────┐    ┌───┬─────────────────┐",
             "│ 1 │     Играть      │    │ 2 │  Выйти из игры  │",
+            "└───┴─────────────────┘    └───┴─────────────────┘"};
+
+    String[] buttonRemane = {
+            "┌───┬─────────────────┐    ┌───┬─────────────────┐",
+            "│ 1 │    Поменять     │    │ 2 │  Сгенерировать  │",
             "└───┴─────────────────┘    └───┴─────────────────┘"};
 
     String[] rulesGame = {
@@ -27,23 +37,19 @@ public class Messages {
             "▶ Правильность предложенных слов будут проверять",
             "  твои соперники"};
 
-    protected void printMainMenu() {
+    default void printMainMenu() {
 
         printLine("┌", "─", "┐");
         printInMiddleWord("");
-        for (String str : balda) {
-            printInMiddleWord(str);
-        }
-        printInMiddleWord(4,"");
-        for (String str : button) {
-            printInMiddleWord(str);
-        }
-        printInMiddleWord(2,"");
+        printInMiddleWord(balda);
+        printInMiddleWord("", "", "", "");
+        printInMiddleWord(button);
+        printInMiddleWord("", "");
         printLine("├", "─", "┘");
         System.out.println("│ Введите соответвствующее число");
     }
 
-    protected void printSettingGame() {
+    default void printSettingGame() {
         printLine("├", "─", "┐");
         printInMiddleWord("Правила игры");
         printLine("├", "─", "┤");
@@ -56,7 +62,7 @@ public class Messages {
         printInMiddleWord("Настройка игры");
     }
 
-    protected void printButtomSetting (String... ch) {
+    default void printLinesInFrame(String... ch) {
         printLine("├", "─", ch[ch.length - 2]);
         for (int i = 0; i < ch.length - 2; i++) {
             printInMiddleWord(ch[i]);
@@ -64,71 +70,70 @@ public class Messages {
         printLine("├", "─", ch[ch.length - 1]);
     }
 
-    protected void printStartGame (Balda balda){
-        printButtomSetting("БАЛДА", "Начальное слово", balda.getFirstWord(), "┐", "┘");
+    default void printButtonRename(String str, String ch1, String ch2) {
+        if (str.isEmpty()) {
+            printLine("├", "─", ch1);
+            printInMiddleWord(buttonRemane);
+            printLine("├", "─", ch2);
+        }
+        else {
+            printLine("├", "─", ch1);
+            printInMiddleWord(str);
+            printInMiddleWord(buttonRemane);
+            printLine("├", "─", ch2);
+        }
     }
 
-    protected void printSummaryTable(Balda balda) {
-        printButtomSetting("Начальное слово", balda.getFirstWord(), "┐",  "┤");
-        for (Player player: balda.getPlayerList()) {
+    default void printStartGame(Game game){
+        printLinesInFrame("БАЛДА", "Начальное слово", game.getFirstWord(), "┐", "┘");
+    }
+
+    default void printSummaryTable(Game game) {
+        printLinesInFrame("Начальное слово", game.getFirstWord(), "┐",  "┤");
+        for (Player player: game.getPlayerList()) {
             printInMiddleWord(player.getName() + " -▶ " + player.getPoints());
             for (String str : player.getWords()) {
                 printInMiddleWord(str);
             }
             printLine("├", "─", "┤");
         }
-        if (balda.numWinnerPlayer().size() > 1) {
+        if (game.getWinnerPlayer().size() > 1) {
             printInMiddleWord("Победители");
             printInMiddleWord("");
-            for (Player player : balda.numWinnerPlayer()) {
+            for (Player player : game.getWinnerPlayer()) {
                 printInMiddleWord(player.getName());
             }
             printLine("├", "─", "┤");
         }
-        else if (balda.numWinnerPlayer().size() == 1) {
+        else if (game.getWinnerPlayer().size() == 1) {
             printInMiddleWord("Победитель");
             printInMiddleWord("");
-            printInMiddleWord(balda.numWinnerPlayer().get(0).getName());
+            printInMiddleWord(game.getWinnerPlayer().get(0).getName());
             printLine("├", "─", "┤");
         }
         printInMiddleWord("Ссырграем снова?");
         for (String str : button) {
             printInMiddleWord(str);
         }
-        printLine("├", "─", "┤");
+        printLine("├", "─", "┘");
     }
 
-    protected void printLine( String ... detail) {
+    default void printLine(String ... detail) {
         System.out.print(detail[0]);
         printStringOfChar(LENGTH_THE_SCREEN, detail[1]);
         System.out.println(detail[2]);
     }
 
-    protected void printPlayersNickname(Player player) {
+    default void printPlayersNickname(Player player) {
         System.out.println("│ " + player.getName());
     }
 
-    //добавить ошибку длинной строки
-    protected void printInMiddleWord(String str) {
-        int countSpaces = LENGTH_THE_SCREEN - str.length();
-        System.out.print("│");
-        printStringOfChar(countSpaces / 2, " ");
-        System.out.print(str);
-        if (countSpaces % 2 == 0) {
-            printStringOfChar(countSpaces / 2, " ");
-        }
-        else {
-            printStringOfChar(countSpaces / 2 + 1, " ");
-        }
-        System.out.println("│");
-    }
-
-    protected void printInMiddleWord(int count, String str) {
-        int countSpaces = LENGTH_THE_SCREEN - str.length();
-        for (int i = 0; i < count; i++) {
+    default void printInMiddleWord(String... str) {
+        for (String s : str) {
+            int countSpaces = LENGTH_THE_SCREEN - s.length();
             System.out.print("│");
             printStringOfChar(countSpaces / 2, " ");
-            System.out.print(str);
+            System.out.print(s);
             if (countSpaces % 2 == 0) {
                 printStringOfChar(countSpaces / 2, " ");
             } else {
@@ -138,19 +143,19 @@ public class Messages {
         }
     }
 
-    protected void printInRightWord(String str, String retreat) {
+    default void printInRightWord(String str, String retreat) {
         System.out.print("│");
         System.out.print(retreat + str);
         int countCh = LENGTH_THE_SCREEN - str.length() - retreat.length();
         printTheEndLine(countCh, " ");
     }
 
-    protected void printTheEndLine (int countCh, String ch) {
-        printStringOfChar(countCh, " ");
+    default void printTheEndLine(int countCh, String ch) {
+        printStringOfChar(countCh, ch);
         System.out.println("│");
     }
 
-    protected void printStringOfChar(int countCh, String ch) {
+    default void printStringOfChar(int countCh, String ch) {
         for (int w = 0; w < countCh / 2; w++) {
             System.out.print(ch + ch);
         }
@@ -158,5 +163,4 @@ public class Messages {
             System.out.print(ch);
         }
     }
-
 }

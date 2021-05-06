@@ -1,11 +1,11 @@
-package com.balda;
+package com.balda.gameClass;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
     private String name;
-    private List<String> words = new LinkedList<>();
+    private List<String> words = new ArrayList<>();
     private int points = 0;
 
     public Player() {
