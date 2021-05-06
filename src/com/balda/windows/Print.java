@@ -5,7 +5,6 @@ import com.balda.gameClass.Player;
 
 import static com.balda.gameClass.Game.LENGTH_THE_SCREEN;
 
-
 public interface Print {
     String[] balda = {
             "███████    ███     ███████       ███         ███  ",
@@ -62,26 +61,8 @@ public interface Print {
         printInMiddleWord("Настройка игры");
     }
 
-    default void printLinesInFrame(String... ch) {
-        printLine("├", "─", ch[ch.length - 2]);
-        for (int i = 0; i < ch.length - 2; i++) {
-            printInMiddleWord(ch[i]);
-        }
-        printLine("├", "─", ch[ch.length - 1]);
-    }
-
-    default void printButtonRename(String str, String ch1, String ch2) {
-        if (str.isEmpty()) {
-            printLine("├", "─", ch1);
-            printInMiddleWord(buttonRemane);
-            printLine("├", "─", ch2);
-        }
-        else {
-            printLine("├", "─", ch1);
-            printInMiddleWord(str);
-            printInMiddleWord(buttonRemane);
-            printLine("├", "─", ch2);
-        }
+    default void printPlayersNickname(Player player) {
+        System.out.println("│ " + player.getName());
     }
 
     default void printStartGame(Game game){
@@ -118,14 +99,32 @@ public interface Print {
         printLine("├", "─", "┘");
     }
 
+    default void printLinesInFrame(String... ch) {
+        printLine("├", "─", ch[ch.length - 2]);
+        for (int i = 0; i < ch.length - 2; i++) {
+            printInMiddleWord(ch[i]);
+        }
+        printLine("├", "─", ch[ch.length - 1]);
+    }
+
+    default void printButtonRename(String str, String ch1, String ch2) {
+        if (str.isEmpty()) {
+            printLine("├", "─", ch1);
+            printInMiddleWord(buttonRemane);
+            printLine("├", "─", ch2);
+        }
+        else {
+            printLine("├", "─", ch1);
+            printInMiddleWord(str);
+            printInMiddleWord(buttonRemane);
+            printLine("├", "─", ch2);
+        }
+    }
+
     default void printLine(String ... detail) {
         System.out.print(detail[0]);
         printStringOfChar(LENGTH_THE_SCREEN, detail[1]);
         System.out.println(detail[2]);
-    }
-
-    default void printPlayersNickname(Player player) {
-        System.out.println("│ " + player.getName());
     }
 
     default void printInMiddleWord(String... str) {

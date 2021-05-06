@@ -3,7 +3,7 @@ package com.balda.gameClass;
 import java.util.*;
 
 public class Game {
-    public static final int LENGTH_THE_SCREEN = 59;
+    public static final int LENGTH_THE_SCREEN = 100;
     private String firstWord;
     private Set<Character> firstWordCharArray = new HashSet<>();
     private Set<String> setWords = new HashSet<>();

@@ -36,7 +36,7 @@ public class PlayWindows extends CheckMethods implements Print {
             if (extraLetters.isEmpty()) {
                 if (game.addWord(word)) {
                     game.getPlayer(numPlayer).addWord(word);
-                    System.out.println("│ Слово защитано");
+                    System.out.println("│ Слово засчитано");
                     return true;
                 }
                 else {

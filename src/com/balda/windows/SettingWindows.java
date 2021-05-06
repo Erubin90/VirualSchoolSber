@@ -50,7 +50,7 @@ public class SettingWindows extends CheckMethods implements Print{
             }
         }
         catch (InputMismatchException ex) {
-            printInRightWord("На ввод принимается только число от 2 до 10", "  ");
+            System.out.println("│  На ввод принимается только число от 2 до 10");
         }
         return countPlayer();
     }
