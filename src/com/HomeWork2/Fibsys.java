@@ -1,4 +1,4 @@
-package HomeWork2;
+package com.HomeWork2;
 import java.util.Scanner;
 public class Fibsys {
     //
