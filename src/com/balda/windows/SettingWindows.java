@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class SettingWindows extends CheckMethods implements Print{
     public void settingGame(Game game) {
-        printSettingGame();
+        printSetting();
         customization(game);
     }
 

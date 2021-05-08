@@ -11,7 +11,7 @@ public class Game {
 
 
     public Game() {
-
+        firstWord = "";
     }
 
     public String getFirstWord() {
@@ -66,5 +66,12 @@ public class Game {
 
     public void addPlayer(Player player) {
         playerList.add(player);
+    }
+
+    public void clear(){
+        firstWordCharArray.clear();
+        setWords.clear();
+        firstWord = "";
+        playerList.clear();
     }
 }

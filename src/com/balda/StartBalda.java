@@ -12,15 +12,16 @@ public class StartBalda {
         var settingWindows = new SettingWindows();
         var playWindows = new PlayWindows();
         var endWindows = new EndWindows();
+        var game = new Game();
 
         boolean flagPlayGame = startWindows.mainMenu();
         while (flagPlayGame) {
-            var game = new Game();
             settingWindows.settingGame(game);
             if(!playWindows.playGame(game)){
                 flagPlayGame = false;
             }
         }
+        game.clear();
         endWindows.endGame();
     }
 }

@@ -48,7 +48,7 @@ public interface Print {
         System.out.println("│ Введите соответвствующее число");
     }
 
-    default void printSettingGame() {
+    default void printSetting() {
         printLine("├", "─", "┐");
         printInMiddleWord("Правила игры");
         printLine("├", "─", "┤");
