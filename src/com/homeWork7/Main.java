@@ -1,10 +1,6 @@
 package com.homeWork7;
-import com.homeWork7.task1.CountPrimeNumComparator;
-import com.homeWork7.task1.MyIntegerC1;
-import com.homeWork7.task1.MyIntegerCT1;
-import com.homeWork7.task2.CountDigitsInDecimalRepresentation;
-import com.homeWork7.task2.MyIntegerC2;
-import com.homeWork7.task2.MyIntegerCT2;
+import com.homeWork7.test.MyIntegerCT1;
+import com.homeWork7.test.MyIntegerCT2;
 
 /*
  * Я специально создал MyIntegerCT и MyIntegerC, чтоб посмотреть как будет работать compareTo и Comparator по отдельности.
@@ -13,75 +9,57 @@ import com.homeWork7.task2.MyIntegerCT2;
  * MyIntegerC - использует для сортировки Comparator
  */
 
+import java.util.Arrays;
 import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――――――――");
+        Integer[] testTask1 = {64, 65, 63, 70, 8};
+        Integer[] testTask2 = {123456789, 1111, 111, 10, 50};
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――");
         System.out.println("Task1");
         System.out.println("Создать класс целых чисел MyInteger с порядком на основе количества простых делителей.");
-        System.out.print("\nMyInteger using compareTo\n");
-        MyIntegerCT1 oneCT1 = new MyIntegerCT1(210);
-        MyIntegerCT1 oneCT2 = new MyIntegerCT1(30);
-        MyIntegerCT1 oneCT3 = new MyIntegerCT1(8);
-        MyIntegerCT1 oneCT4 = new MyIntegerCT1(2);
-        MyIntegerCT1 oneCT5 = new MyIntegerCT1(0);
+        System.out.println("Числа для теста: " + Arrays.toString(testTask1));
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――");
+        System.out.println("MyInteger using compareTo");
+        MyIntegerCT1[] one = new MyIntegerCT1[testTask1.length];
+        for (int i = 0; i < one.length; i++){
+            one[i] = new MyIntegerCT1(testTask1[i]);
+        }
+        TreeSet<MyIntegerCT1> oneCT = new TreeSet<>(Arrays.asList(one));
+        oneCT.forEach(System.out::println);
 
-        TreeSet<MyIntegerCT1> oneCTs = new TreeSet<>();
-        oneCTs.add(oneCT1);
-        oneCTs.add(oneCT2);
-        oneCTs.add(oneCT3);
-        oneCTs.add(oneCT4);
-        oneCTs.add(oneCT5);
-        oneCTs.forEach(System.out::println);
-
-        System.out.println("\nMyInteger using Comparator");
-        MyIntegerC1 oneC1 = new MyIntegerC1(210);
-        MyIntegerC1 oneC2 = new MyIntegerC1(30);
-        MyIntegerC1 oneC3 = new MyIntegerC1(6);
-        MyIntegerC1 oneC4 = new MyIntegerC1(2);
-        MyIntegerC1 oneC5 = new MyIntegerC1(0);
-        TreeSet<MyIntegerC1> oneCs = new TreeSet<>(new CountPrimeNumComparator());
-        oneCs.add(oneC1);
-        oneCs.add(oneC2);
-        oneCs.add(oneC3);
-        oneCs.add(oneC4);
-        oneCs.add(oneC5);
+        System.out.println("\nMyInteger using CountPrimeNumComparator");
+        MyInteger[] myIntegers1 = new MyInteger[testTask1.length];
+        for (int i = 0; i < myIntegers1.length; i++) {
+            myIntegers1[i] = new MyInteger(testTask1[i]);
+        }
+        TreeSet<MyInteger> oneCs = new TreeSet<>(new CountPrimeNumComparator());
+        oneCs.addAll(Arrays.asList(myIntegers1));
         oneCs.forEach(System.out::println);
-        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――――――――");
-        System.out.println();
-        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――――――――");
+
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――");
         System.out.println("Task2");
         System.out.println("Создать класс целых чисел MyInteger с порядком на основе количества различных (!) цифр в десятичном представлении.");
-        System.out.println("\nMyInteger using compareTo");
-        MyIntegerCT2 oneCT21 = new MyIntegerCT2(123456789);
-        MyIntegerCT2 oneCT22 = new MyIntegerCT2(111222333);
-        MyIntegerCT2 oneCT23 = new MyIntegerCT2(111);
-        MyIntegerCT2 oneCT24 = new MyIntegerCT2(10);
-        MyIntegerCT2 oneCT25 = new MyIntegerCT2(5);
+        System.out.println("Числа для теста: " + Arrays.toString(testTask2));
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――");
+        System.out.println("MyInteger using compareTo");
+        MyIntegerCT2[] twoCT = new MyIntegerCT2[testTask2.length];
+        for (int i = 0; i < twoCT.length; i++) {
+            twoCT[i] = new MyIntegerCT2(testTask2[i]);
+        }
+        TreeSet<MyIntegerCT2> twoCTs = new TreeSet<>(Arrays.asList(twoCT));
+        twoCTs.forEach(System.out::println);
 
-        TreeSet<MyIntegerCT2> oneCT2s = new TreeSet<>();
-        oneCT2s.add(oneCT21);
-        oneCT2s.add(oneCT22);
-        oneCT2s.add(oneCT23);
-        oneCT2s.add(oneCT24);
-        oneCT2s.add(oneCT25);
-        oneCT2s.forEach(System.out::println);
-
-        System.out.println("\nMyInteger using Comparator");
-        MyIntegerC2 oneC21 = new MyIntegerC2(123456789);
-        MyIntegerC2 oneC22 = new MyIntegerC2(111222333);
-        MyIntegerC2 oneC23 = new MyIntegerC2(111234);
-        MyIntegerC2 oneC24 = new MyIntegerC2(10);
-        MyIntegerC2 oneC25 = new MyIntegerC2(5);
-        TreeSet<MyIntegerC2> oneC2s = new TreeSet<>(new CountDigitsInDecimalRepresentation());
-        oneC2s.add(oneC21);
-        oneC2s.add(oneC22);
-        oneC2s.add(oneC23);
-        oneC2s.add(oneC24);
-        oneC2s.add(oneC25);
-        oneC2s.forEach(System.out::println);
-        System.out.println("――――――――――――――――――――――――――――――――――――――――――――――――――――――――");
+        System.out.println("\nMyInteger using CountDigitsInDecimalRepresentation");
+        MyInteger[] myIntegers2 = new MyInteger[testTask2.length];
+        for (int i = 0; i < myIntegers2.length; i++) {
+            myIntegers2[i] = new MyInteger(testTask2[i]);
+        }
+        TreeSet<MyInteger> two = new TreeSet<>(new CountDigitsInDecimalRepresentation());
+        two.addAll(Arrays.asList(myIntegers2));
+        two.forEach(System.out::println);
+        System.out.println("―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――");
     }
 }
 

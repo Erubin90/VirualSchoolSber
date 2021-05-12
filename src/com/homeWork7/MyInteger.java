@@ -1,20 +1,20 @@
 
-package com.homeWork7.task2;
+package com.homeWork7;
 
-public class MyIntegerC2 {
-    int number;
+public class MyInteger {
+    private Integer number;
 
-    public MyIntegerC2(int number) {
+    public MyInteger(int number) {
         this.number = number;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
     @Override
     public String toString() {
-        return "MyIntegerC2{" +
+        return "MyInteger{" +
                 "number=" + number +
                 '}';
     }

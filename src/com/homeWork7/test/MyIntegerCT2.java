@@ -1,13 +1,13 @@
 
 
-package com.homeWork7.task2;
+package com.homeWork7.test;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class MyIntegerCT2 implements Comparable<MyIntegerCT2>{
-    int number;
+    private Integer number;
 
     public MyIntegerCT2(int num) {
         this.number = num;
@@ -25,9 +25,19 @@ public class MyIntegerCT2 implements Comparable<MyIntegerCT2>{
 
     @Override
     public int compareTo(@NotNull MyIntegerCT2 o) {
-        int count1 = countDigitsInDecimalRepresentation(this.number);
-        int count2 = countDigitsInDecimalRepresentation(o.number);
-        return Integer.compare(count1, count2);
+        Integer x = countDigitsInDecimalRepresentation(this.number);
+        Integer y = countDigitsInDecimalRepresentation(o.number);
+        if (this.number.equals(o.number)) {
+            return 0;
+        }
+        else {
+            if (x.equals(y)) {
+                return this.number < o.number ? -1 : 1;
+            }
+            else {
+                return x < y ? -1 : 1;
+            }
+        }
     }
 
     @Override

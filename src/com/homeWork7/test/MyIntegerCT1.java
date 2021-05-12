@@ -1,10 +1,10 @@
 
 
-package com.homeWork7.task1;
+package com.homeWork7.test;
 import org.jetbrains.annotations.NotNull;
 
 public class MyIntegerCT1 implements Comparable<MyIntegerCT1>{
-    int number;
+    private Integer number;
 
     public MyIntegerCT1(int num) {
         this.number = num;
@@ -19,7 +19,7 @@ public class MyIntegerCT1 implements Comparable<MyIntegerCT1>{
             if (x % i == 0) {
                 count++;
                 x /= i;
-                i = 2;
+                i = 1;
             }
         }
         return count;
@@ -27,7 +27,20 @@ public class MyIntegerCT1 implements Comparable<MyIntegerCT1>{
 
     @Override
     public int compareTo(@NotNull MyIntegerCT1 o) {
-        return Integer.compare(setCountPrimeNum(this.number), setCountPrimeNum(o.number));
+        Integer x = setCountPrimeNum(this.number);
+        Integer y = setCountPrimeNum(o.number);
+        if (this.number.equals(o.number)) {
+            return 0;
+        }
+        else {
+            if (x.equals(y)) {
+                return this.number < o.number ? -1 : 1;
+            }
+            else {
+                return x < y ? -1 : 1;
+            }
+        }
+
     }
 
     @Override
