@@ -1,0 +1,21 @@
+     **/target/
+     !.mvn/wrapper/maven-wrapper.jar
+
+     ### Apple files ###
+     **/.DC_Store
+
+     ### IntelliJ IDEA ###
+     **/.idea
+     *.iws
+     *.iml
+     *.ipr
+
+     ### Build file ###
+     **/bin/
+     **/out/
+     *.class
+     *.jar
+     *.war
+
+     ### log file
+     *.log
