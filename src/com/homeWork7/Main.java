@@ -1,17 +1,17 @@
 package com.homeWork7;
-/*
- * Я специально создал MyIntegerCT и MyIntegerC, чтоб посмотреть как будет работать compareTo и Comparator по отдельности.
- * На уроке показывалась их работа в одном классе
- * MyIntegerCT - использует для сортировки compareTo
- * MyIntegerC - использует для сортировки Comparator
- */
-
 import com.homeWork7.task1.CountPrimeNumComparator;
 import com.homeWork7.task1.MyIntegerC1;
 import com.homeWork7.task1.MyIntegerCT1;
 import com.homeWork7.task2.CountDigitsInDecimalRepresentation;
 import com.homeWork7.task2.MyIntegerC2;
 import com.homeWork7.task2.MyIntegerCT2;
+
+/*
+ * Я специально создал MyIntegerCT и MyIntegerC, чтоб посмотреть как будет работать compareTo и Comparator по отдельности.
+ * На уроке показывалась их работа в одном классе
+ * MyIntegerCT - использует для сортировки compareTo
+ * MyIntegerC - использует для сортировки Comparator
+ */
 
 import java.util.TreeSet;
 
@@ -23,7 +23,7 @@ public class Main {
         System.out.print("\nMyInteger using compareTo\n");
         MyIntegerCT1 oneCT1 = new MyIntegerCT1(210);
         MyIntegerCT1 oneCT2 = new MyIntegerCT1(30);
-        MyIntegerCT1 oneCT3 = new MyIntegerCT1(6);
+        MyIntegerCT1 oneCT3 = new MyIntegerCT1(8);
         MyIntegerCT1 oneCT4 = new MyIntegerCT1(2);
         MyIntegerCT1 oneCT5 = new MyIntegerCT1(0);
 
