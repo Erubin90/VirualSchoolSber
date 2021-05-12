@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CountDigitsInDecimalRepresentation implements Comparator<MyInteger> {
-
     @Override
     public int compare(MyInteger o1, MyInteger o2) {
         Integer x = countDigitsInDecimalRepresentation(o1.getNumber());

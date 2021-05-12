@@ -3,7 +3,6 @@ package com.homeWork7;
 import java.util.Comparator;
 
 public class CountPrimeNumComparator implements Comparator<MyInteger> {
-
     @Override
     public int compare(MyInteger o1, MyInteger o2) {
         Integer x = countPrimeNum(o1.getNumber());

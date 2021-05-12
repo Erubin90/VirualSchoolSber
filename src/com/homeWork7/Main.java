@@ -48,6 +48,7 @@ public class Main {
         for (int i = 0; i < twoCT.length; i++) {
             twoCT[i] = new MyIntegerCT2(testTask2[i]);
         }
+
         TreeSet<MyIntegerCT2> twoCTs = new TreeSet<>(Arrays.asList(twoCT));
         twoCTs.forEach(System.out::println);
 

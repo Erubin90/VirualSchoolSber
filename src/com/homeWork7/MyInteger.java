@@ -17,6 +17,7 @@ public class MyInteger {
         return "MyInteger{" +
                 "number=" + number +
                 '}';
+
     }
 }
 

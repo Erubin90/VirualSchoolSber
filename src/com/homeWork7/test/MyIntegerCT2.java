@@ -46,6 +46,7 @@ public class MyIntegerCT2 implements Comparable<MyIntegerCT2>{
                 "num = " + number +
                 '}';
     }
+
 }
 
 
