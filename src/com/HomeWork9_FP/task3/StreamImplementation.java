@@ -82,8 +82,8 @@ public class StreamImplementation {
         return sum;
     }
 
-    public static <T> int count(List<T> origin, Predicate<T> predicate) {
-        int count = 0;
+    public static <T> long count(List<T> origin, Predicate<T> predicate) {
+        long count = 0;
         for (T element : origin) {
             if (predicate.test(element)) {
                 count++;
