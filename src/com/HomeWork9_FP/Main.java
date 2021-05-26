@@ -39,7 +39,6 @@ public class Main {
                 num1 + num2 + num3 + num4 > 20;
         //Task 3
         List<Integer> arr = new LinkedList<>(Arrays.asList(1, 21, 10, 4));
-        System.out.println("");
         System.out.println(StreamImplementation.map(arr, (x) -> x + 10));
         StreamImplementation.forEach(arr, System.out::println);
         System.out.println(StreamImplementation.filter(arr, (x) -> x <= 10));
